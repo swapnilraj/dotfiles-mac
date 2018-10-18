@@ -1,0 +1,2 @@
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"

@@ -1,0 +1,4 @@
+pirates-pass() {
+	PASSWORD_STORE_DIR="${HOME}/pirates-pass";
+  pass
+}

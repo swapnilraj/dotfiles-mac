@@ -1,0 +1,71 @@
+source $HOME/.bash/.bash_git
+
+function prompt() {	
+#export PS1='\n\[\033[1;38;5;209m\][\u@\[\033[1;34m\]\h:\W]'
+
+  local EXIT="$?"
+  # Need to figure out a better way
+  # Reset colours
+  local RESET='\e[0m'
+  # Regular colours
+  local BLK='\e[0;30m'
+  local RED='\e[0;31m'
+  local GRN='\e[0;32m'
+  local YLW='\e[0;33m'
+  local BLU='\e[0;34m'
+  local PRP='\e[0;35m'
+  local CYN='\e[0;36m'
+  local WHT='\e[0;37m'
+  # Light Colours
+  local LT_BLK='\e[0;90m'
+  local LT_RED='\e[0;91m'
+  local LT_GRN='\e[0;92m'
+  local LT_YLW='\e[0;93m'
+  local LT_BLU='\e[0;94m'
+  local LT_PRP='\e[0;95m'
+  local LT_CYN='\e[0;96m'
+  local LT_WHT='\e[0;97m'
+  # Bold colours
+  local BLK_BF='\e[1;30m'
+  local RED_BF='\e[1;31m'
+  local GRN_BF='\e[1;32m'
+  local YLW_BF='\e[1;33m'
+  local BLU_BF='\e[1;34m'
+  local PRP_BF='\e[1;35m'
+  local CYN_BF='\e[1;36m'
+  local WHT_BF='\e[1;37m'
+  # Underlined colours
+  local BLK_UL='\e[4;30m'
+  local RED_UL='\e[4;31m'
+  local GRN_UL='\e[4;32m'
+  local YLW_UL='\e[4;33m'
+  local BLU_UL='\e[4;34m'
+  local PRP_UL='\e[4;35m'
+  local CYN_UL='\e[4;36m'
+  local WHT_UL='\e[4;37m'
+  # Background colours
+  local BLK_BG='\e[40m'
+  local RED_BG='\e[41m'
+  local GRN_BG='\e[42m'
+  local YLW_BG='\e[43m'
+  local BLU_BG='\e[44m'
+  local PRP_BG='\e[45m'
+  local CYN_BG='\e[46m'
+  local WHT_BG='\e[47m'
+
+  PS1="\n\[$BLU_BF\]# "
+  PS1+="\[$CYN\]\u \[$RESET\]"
+  PS1+="\[$WHT\]@ \[$GRN\]\h \[$RESET\]"
+  PS1+="\[$WHT\]in \[$YLW_BF\]\w\[$RESET\]"
+
+  PS1+=$(__git_ps1 "\[$WHT\] on \[$RESET\]git:\[$CYN\]%s")
+  PS1+=" \[$WHT\][\t]"
+  if [ $EXIT != 0 ]; then
+    PS1+="\[$RED\] $EXIT\[$RESET\]"
+  fi
+  PS1+="\n"
+  PS1+="\[$RED_BF\]\$ \[$RESET\]"
+
+}
+
+export PROMPT_COMMAND=prompt
