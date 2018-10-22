@@ -52,7 +52,6 @@ let g:dracula_colorterm=0
 color dracula
 
 " ---- Airline -----
-
 " Show PASTE if in paste mode
 let g:airline_detect_paste=1
 
@@ -60,8 +59,6 @@ let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
  " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-" Patched font for the fancy icons
-set guifont=Operator\ Mono
 
 " ---- Ctrl - P -----
 
@@ -78,4 +75,3 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_working_path_mode = 'r'
 
 let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
-let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
