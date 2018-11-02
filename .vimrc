@@ -75,3 +75,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_working_path_mode = 'r'
 
 let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+
+" Go specific bindings
+au FileType go set noexpandtab
+au FileType go set shiftwidth=8
+au FileType go set softtabstop=8
+au FileType go set tabstop=8
