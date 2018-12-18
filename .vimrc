@@ -40,7 +40,8 @@ set smarttab
 set expandtab
 set relativenumber
 set mouse=c
-set colorcolumn=80
+set colorcolumn=79
+set textwidth=79
 set swapfile
 set wildmenu
 set clipboard=unnamed
