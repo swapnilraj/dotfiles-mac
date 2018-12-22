@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 " ----- Making Vim look good ------------------------------------------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dracula/vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -52,7 +51,14 @@ set listchars=tab:\|\ ,trail:•,eol:⌐,nbsp:+
 set splitbelow
 set splitright
 set hidden " Required for renaming across files by LanguageClientNeovim
+" Set timeout length for consecutive key presses in a map to 300
+set timeoutlen=300
 syntax on
+
+" Change mapleader
+let mapleader = ","
+
+nnoremap <leader>j 80\|bhxi<CR><Esc>J
 
 " Go specific bindings
 au FileType go set noexpandtab
@@ -96,19 +102,16 @@ let g:airline#extensions#tabline#enabled = 1
  " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" ---- Ctrl - P -----
+" ------ FZF -----------
+" Change default utility used by fzf to seach files
+" using ag for better code searching
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
- " Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-" Use the nearest .git directory as the cwd
-" This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_working_path_mode = 'r'
+" Use Ctrl-P to trigger fzf
+" Show only files that git is tracking
+nnoremap <C-P> :GFiles<CR>
+" Use Ctrl-P b to trigger fzf with open buffers
+nnoremap <C-P>b :Buffers<CR>
 
 " ------ Language Client Neovim ------
 
@@ -123,9 +126,9 @@ let g:LanguageClient_serverCommands = {
 
 " ------ Language Server key bindings ---------
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <leader> H :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader> D :call LanguageClient#textDocument_definition()<CR>
-"nnoremap <silent> R :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>h :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
 
 
 " netrw stuff
