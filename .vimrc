@@ -117,6 +117,7 @@ nnoremap <C-P>b :Buffers<CR>
 
 let g:LanguageClient_autostart = 1
 let g:LanguageClient_serverCommands = {
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
       \ 'haskell': ['hie-wrapper'],
       \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
       \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
