@@ -62,9 +62,9 @@ nnoremap <leader>j 80\|bhxi<CR><Esc>J
 
 " Go specific bindings
 au FileType go set noexpandtab
-au FileType go set shiftwidth=2
+au FileType go set shiftwidth=8
 au FileType go set softtabstop=8
-au FileType go set tabstop=8
+au FileType go set tabstop=2
 
 " Enable spellcheck for markdown files
 " Markdown files usually used for essays
@@ -74,7 +74,7 @@ au FileType markdown set spelllang=en_us
 " Set correct file for typescript files
 au BufRead,BufNewFile *.ts   setfiletype typescript
 
-au BufEnter  *  call ncm2#enable_for_buffer()
+au BufEnter * call ncm2#enable_for_buffer()
 " Affects the visual representation of what happens after you hit <C-x><C-o>
 " https://neovim.io/doc/user/insert.html#i_CTRL-X_CTRL-O
 " https://neovim.io/doc/user/options.html#'completeopt'
@@ -109,9 +109,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Use Ctrl-P to trigger fzf
 " Show only files that git is tracking
-nnoremap <C-P> :GFiles<CR>
+nnoremap <C-p> :GFiles<CR>
 " Use Ctrl-P b to trigger fzf with open buffers
-nnoremap <C-P>b :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 
 " ------ Language Client Neovim ------
 
@@ -123,6 +123,8 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
       \ 'reason':
       \ ['/Users/thawne/dev/reason-language-server/reason-language-server.exe'],
+      \ 'go': ['/Users/thawne/dev/go/bin/go-langserver'],
+      \ 'python': [  '/usr/local/bin/pyls'],
       \}
 
 " ------ Language Server key bindings ---------
