@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 " ----- Making Vim look good ------------------------------------------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -52,6 +53,8 @@ set splitbelow
 set splitright
 set hidden " Required for renaming across files by LanguageClientNeovim
 " Set timeout length for consecutive key presses in a map to 300
+set ttimeout
+set ttimeoutlen=0
 set timeoutlen=300
 syntax on
 
@@ -89,9 +92,10 @@ set completeopt=noinsert,menuone,noselect
 " Always show statusbar
 set laststatus=2
 
-" ----- Dracula Color Scheme ---- 
-let g:dracula_colorterm=0
-color dracula
+" ----- Gruvbox Color Scheme ---- 
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark
 
 " ---- Airline -----
 " Show PASTE if in paste mode
@@ -125,6 +129,8 @@ let g:LanguageClient_serverCommands = {
       \ ['/Users/thawne/dev/reason-language-server/reason-language-server.exe'],
       \ 'go': ['/Users/thawne/dev/go/bin/go-langserver'],
       \ 'python': [  '/usr/local/bin/pyls'],
+      \ 'ocaml':
+      \ ['/Users/thawne/dev/reason-language-server/reason-language-server.exe'],
       \}
 
 " ------ Language Server key bindings ---------
