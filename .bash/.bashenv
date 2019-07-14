@@ -4,6 +4,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export GOPATH=$HOME/dev/go
 
+# NVM stuff
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+
 # PATH config
 export PATH="/usr/local/bin":$PATH:$HOME/.iterm
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
@@ -11,4 +16,6 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH="$PATH:/Users/thawne/.local/bin/"
 export PATH=$PATH:$GOPATH/bin
-EDITOR="nvim"
+export PATH="$(yarn global bin):$PATH"
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export EDITOR="nvim"
