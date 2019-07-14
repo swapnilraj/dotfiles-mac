@@ -30,22 +30,24 @@ filetype plugin indent on
 set backspace=indent,eol,start
 set ruler
 set number
+set relativenumber
 set showcmd
 set incsearch
 set hlsearch
+set ignorecase
+set smartcase
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set smarttab
 set expandtab
-set relativenumber
-set mouse=c
+set mouse=a "enable mouse because somtimes I want to just scroll
 set colorcolumn=79
 set textwidth=79
 set swapfile
+set dir=/tmp
 set wildmenu
 set clipboard=unnamed
-set dir=/tmp
 "set shellcmdflag=-ic " source bash
 set list
 set listchars=tab:\|\ ,trail:•,eol:⌐,nbsp:+
