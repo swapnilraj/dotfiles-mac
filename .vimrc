@@ -96,7 +96,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Handy mappings
 nnoremap <tab> :w<bar>suspend<CR>
-nnoremap <Leader>s :%s/\<C-r><C-w\>/
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 :command! W w
 
 " ------ FZF -----------
