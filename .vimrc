@@ -13,6 +13,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 filetype plugin indent on
 
@@ -92,6 +93,11 @@ let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
  " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Handy mappings
+nnoremap <tab> :w<bar>suspend<CR>
+nnoremap <Leader>s :%s/\<C-r><C-w\>/
+:command! W w
 
 " ------ FZF -----------
 " Change default utility used by fzf to seach files
