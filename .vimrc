@@ -58,10 +58,7 @@ let mapleader = ","
 nnoremap <leader>j 80\|bhxi<CR><Esc>J
 
 " Go specific bindings
-au FileType go set noexpandtab
-au FileType go set shiftwidth=8
-au FileType go set softtabstop=8
-au FileType go set tabstop=2
+au FileType go set noexpandtab shiftwidth=8 softtabstop=8 tabstop=2
 
 " Enable spellcheck for markdown files
 " Markdown files usually used for essays
