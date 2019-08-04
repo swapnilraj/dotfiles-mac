@@ -14,6 +14,7 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 call plug#end()
 filetype plugin indent on
 
