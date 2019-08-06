@@ -9,7 +9,6 @@ Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'javascript' ] }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" Language server for ReasonML
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -98,14 +97,10 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 :command! W w
 
 " ------ FZF -----------
-" Change default utility used by fzf to seach files
-" using ag for better code searching
-"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
-" Use Ctrl-P to trigger fzf
+" Ctrl-p to trigger fzf
 " Show only files that git is tracking
 nnoremap <C-p> :GFiles<CR>
-" Use Ctrl-P b to trigger fzf with open buffers
+" Ctrl-b to trigger fzf with open buffers
 nnoremap <C-b> :Buffers<CR>
 
 " netrw stuff
