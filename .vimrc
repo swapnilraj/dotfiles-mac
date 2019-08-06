@@ -46,10 +46,10 @@ set listchars=tab:\|\ ,trail:•,eol:⌐,nbsp:+
 set splitbelow
 set splitright
 set hidden " Required for renaming across files by LanguageClientNeovim
-" Set timeout length for consecutive key presses in a map to 300
+" Set timeout length for consecutive key presses in a map to 500
 set ttimeout
 set ttimeoutlen=0
-set timeoutlen=300
+set timeoutlen=500
 syntax on
 
 " Change mapleader
