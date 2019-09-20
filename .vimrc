@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
 call plug#end()
 filetype plugin indent on
 
@@ -64,8 +65,9 @@ au FileType go set noexpandtab shiftwidth=8 softtabstop=8 tabstop=2
 au FileType markdown set spell
 au FileType markdown set spelllang=en_us
 
-" Set correct file for typescript files
-au BufRead,BufNewFile *.ts   setfiletype typescript
+" Set correct file for files
+au BufRead,BufNewFile *.ts   set filetype typescript
+au BufNewFile,BufRead *.purs set filetype=purescript
 
 " This will show the popup menu even if there's only one match (menuone),
 " prevent automatic selection (noselect) and prevent automatic text injection
@@ -90,6 +92,14 @@ let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
  " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Language server key bindings
+nmap <leader>d <Plug>(coc-definition)
+nmap <leader>y <Plug>(coc-type-definition)
+nmap <leader>i <Plug>(coc-implementation)
+nmap <leader>r <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+vmap <leader>f  <Plug>(coc-format-selected)
 
 " Handy mappings
 nnoremap <tab> :w<bar>suspend<CR>
