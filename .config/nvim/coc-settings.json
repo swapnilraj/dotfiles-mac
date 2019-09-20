@@ -1,0 +1,23 @@
+{
+  "suggest.autoTrigger": "trigger",
+  "tsserver.npm": "/usr/local/bin/npm",
+  "languageserver": {
+  "haskell": {
+    "command": "hie-wrapper",
+    "args": ["-l", "hie-log", "-d"],
+    "rootPatterns": [
+      ".stack.yaml",
+      "cabal.config",
+      "package.yaml"
+    ],
+    "filetypes": [
+      "hs",
+      "lhs",
+      "haskell"
+    ],
+    "initializationOptions": {
+      "languageServerHaskell": {}
+    }
+  }
+  }
+}
