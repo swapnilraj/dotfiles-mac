@@ -4,17 +4,21 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 " ----- Making Vim look good ------------------------------------------
-Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Language specific plugins
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'javascript' ] }
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'reasonml-editor/vim-reason-plus'
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
+Plug 'mlr-msft/vim-loves-dafny', { 'for': 'dafny' }
+" Utility Plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
+Plug 'jreybert/vimagit'
 call plug#end()
 filetype plugin indent on
 
@@ -93,13 +97,27 @@ let g:airline#extensions#tabline#enabled = 1
  " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+function! s:show_documentation()
+    if &filetype == 'vim'
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
 " Language server key bindings
 nmap <leader>d <Plug>(coc-definition)
 nmap <leader>y <Plug>(coc-type-definition)
 nmap <leader>i <Plug>(coc-implementation)
 nmap <leader>r <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>a :CocAction<CR>
 vmap <leader>f  <Plug>(coc-format-selected)
+" Use K for show documentation
+nnoremap <leader>h :call <SID>show_documentation()<CR>
+" Use :Format for format current buffer
+command! -nargs=0 Format :call CocAction('format')
+nnoremap <leader>f :Format<CR>
 
 " Handy mappings
 nnoremap <tab> :w<bar>suspend<CR>
