@@ -130,6 +130,8 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <C-p> :GFiles<CR>
 " Ctrl-b to trigger fzf with open buffers
 nnoremap <C-b> :Buffers<CR>
+" Make them windows float
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
 
 " netrw stuff
 let g:netrw_banner = 0
