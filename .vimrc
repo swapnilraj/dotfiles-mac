@@ -11,6 +11,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'javascript' ] }
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
 Plug 'mlr-msft/vim-loves-dafny', { 'for': 'dafny' }
@@ -19,6 +20,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'jreybert/vimagit'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 filetype plugin indent on
 
@@ -67,10 +69,10 @@ au FileType go set noexpandtab shiftwidth=8 softtabstop=8 tabstop=2
 " Enable spellcheck for markdown files
 " Markdown files usually used for essays
 au FileType markdown set spell
-au FileType markdown set spelllang=en_us
+au FileType markdown set spelllang=en_gb
 
 " Set correct file for files
-au BufRead,BufNewFile *.ts   set filetype typescript
+au BufRead,BufNewFile *.ts   set filetype=typescript
 au BufNewFile,BufRead *.purs set filetype=purescript
 
 " This will show the popup menu even if there's only one match (menuone),
