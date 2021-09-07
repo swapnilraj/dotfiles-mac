@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>ED69BC16-D41A-4DC7-95D1-35B6D0221C00</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>81717C54-E2E7-4F9A-8607-769078A3D347</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Swapnil Raj, Jorik Schellekens</string>
+	<key>description</key>
+	<string>Sends direct messages to matrix users</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>matrix</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/usr/bin/python
+# encoding: utf-8
+import sys
+
+import asyncio
+from nio import AsyncClient
+
+user_rooms = {
+    "swapnil": "!eKTeXXtGZnfPJqGvyK:matrix.org",
+	"jack": "!XMZmhJifbfDKJFllzB:nul.ie"
+}
+
+args = sys.argv[1].split(" ")
+
+async def sendmessage():
+    client = AsyncClient("https://matrix.netsoc.ie/", "@lordraj:netsoc.ie")
+
+    await client.login("4d3!d6e#NC")
+    await client.room_send(
+        room_id=user_rooms[args[0]],
+        message_type="m.room.message",
+        content={
+            "msgtype": "m.text",
+            "body": " ".join(args[1:])
+        }
+    )
+    await client.close()
+
+asyncio.get_event_loop().run_until_complete(sendmessage())</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>81717C54-E2E7-4F9A-8607-769078A3D347</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>matrix</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Send to matrix</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>ED69BC16-D41A-4DC7-95D1-35B6D0221C00</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>81717C54-E2E7-4F9A-8607-769078A3D347</key>
+		<dict>
+			<key>xpos</key>
+			<integer>540</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+		<key>ED69BC16-D41A-4DC7-95D1-35B6D0221C00</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>sraj.dev</string>
+</dict>
+</plist>

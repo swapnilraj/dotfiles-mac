@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 3,
+      "subtext" : {
+        "size" : 14,
+        "colorSelected" : "#3C3836FF",
+        "font" : "Menlo",
+        "color" : "#928374FF"
+      },
+      "shortcut" : {
+        "size" : 19,
+        "colorSelected" : "#B8BB26FF",
+        "font" : "Monaco",
+        "color" : "#B8BB26FF"
+      },
+      "backgroundSelected" : "#A89983FF",
+      "text" : {
+        "size" : 20,
+        "colorSelected" : "#EBDBB2FF",
+        "font" : "Menlo",
+        "color" : "#A89983FF"
+      },
+      "iconPaddingHorizontal" : 10,
+      "paddingVertical" : 0,
+      "iconSize" : 53
+    },
+    "search" : {
+      "paddingVertical" : 1,
+      "background" : "#3C3836FF",
+      "spacing" : 0,
+      "text" : {
+        "size" : 42,
+        "colorSelected" : "#000000FF",
+        "font" : "Menlo",
+        "color" : "#A89983FF"
+      },
+      "backgroundSelected" : "#B2D7FFFF"
+    },
+    "window" : {
+      "color" : "#272727FF",
+      "paddingHorizontal" : 0,
+      "width" : 834,
+      "borderPadding" : 0,
+      "borderColor" : "#3C3836FF",
+      "blur" : 40,
+      "roundness" : -64,
+      "paddingVertical" : 0
+    },
+    "credit" : "InteNs",
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#B8BB26FF",
+      "thickness" : 0
+    },
+    "name" : "gruvbox-dark"
+  }
+}
