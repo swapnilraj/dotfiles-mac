@@ -1,21 +1,31 @@
 # VM/Language config
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$HOME/.cargo/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export GOPATH=$HOME/dev/go
+# [ -s "$HOME/.ghcup/env" ] && 
+source "$HOME/.ghcup/env"
 
 # NVM stuff
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
 
+# pyenv styff
+eval "$(pyenv init -)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # PATH config
 export PATH="/usr/local/bin":$PATH:$HOME/.iterm
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export PATH=$HOME/.cabal/bin:$PATH
-export PATH="$PATH:/Users/thawne/.local/bin/"
 export PATH=$PATH:$GOPATH/bin
 export PATH="$(yarn global bin):$PATH"
-export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH="$(brew --prefix llvm@9):$PATH"
+# export PATH=$HOME/.cabal/bin:$PATH
+# export PATH="$PATH:/Users/thawne/.local/bin/"
+# export PATH="$HOME/Library/Haskell/bin:$PATH"
 export EDITOR="nvim"
+
+eval "$(/usr/libexec/path_helper)"
