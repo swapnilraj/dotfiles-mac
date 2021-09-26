@@ -53,7 +53,13 @@ function prompt() {
   local CYN_BG='\e[46m'
   local WHT_BG='\e[47m'
 
-  PS1="\n\[$BLU_BF\]# "
+  if [[ -n "$IN_NIX_SHELL" ]];
+  then
+    PS1="\n\[$BLU_BF\]#nix "
+  else
+    PS1="\n\[$BLU_BF\]# "
+  fi
+
   PS1+="\[$CYN\]\u \[$RESET\]"
   PS1+="\[$WHT\]@ \[$GRN\]\h \[$RESET\]"
   PS1+="\[$WHT\]in \[$YLW_BF\]\w\[$RESET\]"

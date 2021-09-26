@@ -5,3 +5,10 @@ alias :r="fc -e : -1"
 # Handy alias for repos with multiple remotes
 alias pushall='for i in `git remote`; do git push $i; done;'
 alias pullall='for i in `git remote`; do git pull $i; done;'
+
+alias nixre="darwin-rebuild switch"
+alias nixgc="nix-collect-garbage -d"
+alias nixq="nix-env -qaP"
+alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
+alias nixup="nix-env -u"
+alias nixcfg="nvim ~/.nixpkgs/darwin-configuration.nix"
