@@ -133,6 +133,14 @@ nnoremap <leader>h :call <SID>show_documentation()<CR>
 command! -nargs=0 Format :call CocAction('format')
 nnoremap <leader>f :Format<CR>
 
+" Coc extensions
+let g:coc_global_extensions = [
+    \'coc-clangd',
+    \'coc-css',
+    \'coc-json',
+    \'coc-tsserver',
+    \]
+
 " Handy mappings
 "nnoremap <tab> :w<bar>suspend<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/

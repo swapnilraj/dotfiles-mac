@@ -2,22 +2,34 @@
   "suggest.autoTrigger": "trigger",
   "tsserver.npm": "/usr/local/bin/npm",
   "languageserver": {
-  "haskell": {
-    "command": "hie-wrapper",
-    "args": ["-l", "hie-log", "-d"],
-    "rootPatterns": [
-      ".stack.yaml",
-      "cabal.config",
-      "package.yaml"
-    ],
-    "filetypes": [
-      "hs",
-      "lhs",
-      "haskell"
-    ],
-    "initializationOptions": {
-      "languageServerHaskell": {}
+    "haskell": {
+      "command": "ghcide",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        ".stack.yaml",
+        "cabal.config",
+        "package.yaml",
+        ".hie-bios",
+        "BUILD.bazel"
+      ],
+      "filetypes": [
+        "hs",
+        "lhs",
+        "haskell"
+      ]
+    },
+    "purescript": {
+      "command": "purescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["purescript"],
+      "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
+    },
+  "ocaml-lsp": {
+    "command": "opam",
+    "args": ["config", "exec", "--", "ocamllsp"],
+    "filetypes": ["ocaml", "reason", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex"],
+    "rootPatterns": ["*.opam", "esy.json", "package.json", ".git"]
     }
-  }
-  }
+  },
+  "git.enableGutters": true
 }
