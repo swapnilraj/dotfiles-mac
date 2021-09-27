@@ -9,7 +9,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Language specific plugins
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'javascript' ] }
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -19,8 +19,17 @@ Plug 'mlr-msft/vim-loves-dafny', { 'for': 'dafny' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'jreybert/vimagit'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'Yggdroot/hiPairs'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'kana/vim-textobj-user'
+Plug 'fvictorio/vim-textobj-backticks'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 filetype plugin indent on
 
@@ -81,6 +90,9 @@ au BufNewFile,BufRead *.purs set filetype=purescript
 set completeopt=noinsert,menuone,noselect
 
 " ----- Plugin-Specific Settings --------------------------------------
+" ----- jreybert/vimagit -----
+nnoremap <leader>g :Magit<CR>
+
 " ----- bling/vim-airline settings -----
 " Always show statusbar
 set laststatus=2
@@ -122,18 +134,27 @@ command! -nargs=0 Format :call CocAction('format')
 nnoremap <leader>f :Format<CR>
 
 " Handy mappings
-nnoremap <tab> :w<bar>suspend<CR>
+"nnoremap <tab> :w<bar>suspend<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 :command! W w
 
 " ------ FZF -----------
 " Ctrl-p to trigger fzf
 " Show only files that git is tracking
-nnoremap <C-p> :GFiles<CR>
+"" list files/git files
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+nnoremap <C-p> :Ctrlp<CR>
 " Ctrl-b to trigger fzf with open buffers
 nnoremap <C-b> :Buffers<CR>
 " Make them windows float
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
+
+" --- Async Run -----
+" Open quickfix window of height 6
+let g:asyncrun_open = 6
+
+" ---- LaTex -----
+nnoremap <leader>c :AsyncRun make && open -a Preview && open -a iTerm<CR>
 
 " netrw stuff
 let g:netrw_banner = 0
@@ -141,3 +162,13 @@ let g:netrw_browse_split = 2
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_liststyle = 3
+
+" ---- EditorConfig ----
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" ----- Open quickfix list after grep -----
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l* lwindow
+augroup END
