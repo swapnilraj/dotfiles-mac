@@ -1,4 +1,13 @@
 {
+  "diagnostic-languageserver.formatFiletypes": {
+  "python": ["black"]
+  },
+  "diagnostic-languageserver.formatters": {
+    "black": {
+      "command": "black",
+      "args": ["-q", "-"]
+    }
+  },
   "suggest.autoTrigger": "trigger",
   "tsserver.npm": "/usr/local/bin/npm",
   "languageserver": {
@@ -24,11 +33,16 @@
       "filetypes": ["purescript"],
       "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
     },
-  "ocaml-lsp": {
-    "command": "opam",
-    "args": ["config", "exec", "--", "ocamllsp"],
-    "filetypes": ["ocaml", "reason", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex"],
-    "rootPatterns": ["*.opam", "esy.json", "package.json", ".git"]
+    "ocaml-lsp": {
+      "command": "opam",
+      "args": ["config", "exec", "--", "ocamllsp"],
+      "filetypes": ["ocaml", "reason", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex"],
+      "rootPatterns": ["*.opam", "esy.json", "package.json", ".git"]
+      },
+    "cairo": {
+      "command": "~/.vim/cairo-ls/vscode-cairo/extension/server/out/server.js",
+      "args": ["--stdio"],
+      "filetypes": ["cairo"]
     }
   },
   "git.enableGutters": true
