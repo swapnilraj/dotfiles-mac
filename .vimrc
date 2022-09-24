@@ -85,8 +85,8 @@ au FileType markdown set spelllang=en_gb
 " Set correct file for files
 au BufNewFile,BufRead *.ts   set filetype=typescript
 au BufNewFile,BufRead *.purs set filetype=purescript
-au BufNewFile,BufReadPost *.cairo set filetype=cairo
 au Filetype cairo set syntax=cairo setlocal commentstring=#\ %s
+au BufNewFile,BufReadPost *.cairo set filetype=cairo
 
 " This will show the popup menu even if there's only one match (menuone),
 " prevent automatic selection (noselect) and prevent automatic text injection
@@ -115,6 +115,13 @@ let g:airline#extensions#tabline#enabled = 1
  " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" ---- Folding ----
+if has("nvim")
+    set foldlevel=20
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+endif
+
 function! s:show_documentation()
     if &filetype == 'vim'
         execute 'h '.expand('<cword>')
@@ -141,14 +148,16 @@ nnoremap <leader>f :Format<CR>
 let g:coc_global_extensions = [
     \'coc-clangd',
     \'coc-css',
+    \'coc-jedi',
     \'coc-json',
     \'coc-tsserver',
     \'coc-cairo',
     \'coc-solidity',
+    \'coc-diagnostic',
     \]
 
 " Handy mappings
-"nnoremap <tab> :w<bar>suspend<CR>
+nnoremap <tab> :w<bar>suspend<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 :command! W w
 
