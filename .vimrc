@@ -15,6 +15,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
 Plug 'mlr-msft/vim-loves-dafny', { 'for': 'dafny' }
+Plug 'tomlion/vim-solidity', { 'for': 'solidity' }
 " Utility Plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -30,6 +31,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'kana/vim-textobj-user'
 Plug 'fvictorio/vim-textobj-backticks'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 filetype plugin indent on
 
@@ -49,8 +51,8 @@ set shiftwidth=2
 set smarttab
 set expandtab
 set mouse=a "enable mouse because somtimes I want to just scroll
-set colorcolumn=79
-set textwidth=79
+set colorcolumn=100
+set textwidth=100
 set swapfile
 set dir=/tmp
 set wildmenu
@@ -81,8 +83,10 @@ au FileType markdown set spell
 au FileType markdown set spelllang=en_gb
 
 " Set correct file for files
-au BufRead,BufNewFile *.ts   set filetype=typescript
+au BufNewFile,BufRead *.ts   set filetype=typescript
 au BufNewFile,BufRead *.purs set filetype=purescript
+au BufNewFile,BufReadPost *.cairo set filetype=cairo
+au Filetype cairo set syntax=cairo setlocal commentstring=#\ %s
 
 " This will show the popup menu even if there's only one match (menuone),
 " prevent automatic selection (noselect) and prevent automatic text injection
@@ -139,6 +143,8 @@ let g:coc_global_extensions = [
     \'coc-css',
     \'coc-json',
     \'coc-tsserver',
+    \'coc-cairo',
+    \'coc-solidity',
     \]
 
 " Handy mappings
@@ -150,7 +156,10 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " Ctrl-p to trigger fzf
 " Show only files that git is tracking
 "" list files/git files
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles' : 'Files'
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! Ctrlp execute 'Files' s:find_git_root()
 nnoremap <C-p> :Ctrlp<CR>
 " Ctrl-b to trigger fzf with open buffers
 nnoremap <C-b> :Buffers<CR>
@@ -180,3 +189,24 @@ augroup quickfix
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l* lwindow
 augroup END
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+" use <c-space>for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use <C-@> on vim
+inoremap <silent><expr> <c-@> coc#refresh()
+
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
